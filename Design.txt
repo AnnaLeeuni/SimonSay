@@ -1,0 +1,82 @@
+The design includes the following classes:
+
+SimonWorld: This class represents the world of the game and has fields for the current Simon sequence, 
+the current player sequence, and various boolean variables to keep track of the state of the game. 
+It also has fields for the images of the four buttons, and methods to handle mouse clicks and clock ticks.
+
+Button: This class represents one of the four buttons in the game. 
+It has a color field and methods to draw the button when it is dark or lit, 
+and to compare two buttons to see if they are the same.
+
+ILoButton: This interface represents a list of buttons. 
+It has methods to reverse the sequence, get the button at a certain index, 
+get the length of the sequence, and check if it begins with another list of buttons.
+
+MtLoButton: This class represents an empty list of buttons. 
+It has methods to reverse the sequence, get the length of the sequence, 
+and check if it begins with another list of buttons.
+
+ConsLoButton: This class represents a non-empty list of buttons. 
+It has a first field representing the first button in the sequence, 
+and a rest field representing the rest of the sequence. 
+It has methods to reverse the sequence, get the button at a certain index, 
+get the length of the sequence, and check if it begins with another list of buttons.
+
+
+           +----------------+
+           |   SimonWorld   |
+           +----------------+
+           | - simonSequence: ILoButton
+           | - playerSequence: ILoButton
+           | - isGameStarted: boolean
+           | - isGameEnded: boolean
+           | - isPlayerTurn: boolean
+           | - nowCreateseq: boolean
+           | - buttonCreate: boolean
+           | - sequenceIndex: int
+           | - playerInputIndex: int
+           | - yellowButton: WorldImage
+           | - greenButton: WorldImage
+           | - redButton: WorldImage
+           | - blueButton: WorldImage
+           | - rand: Random
+           | - randTester: Random
+           +----------------+
+           | + makeScene(): WorldScene
+           | + worldEnds(): WorldEnd
+           | + onMouseClicked(Posn): SimonWorld
+           | + onTick(): World
+           | - generateButtonByRand(int): Button
+           +----------------+
+                      ^
+                      |
+              +---------------+
+              |    ILoButton   |
+              +---------------+
+              | + reverseSequence(): ILoButton
+              | + reverseSequenceHelper(ILoButton): ILoButton
+              | + getButtonByIndex(int): Button
+              | + getLength(): int
+              | + beginsWith(ILoButton): boolean
+              | + beginsWithHelper(ConsLoButton): boolean
+              +---------------+
+                         ^
+                        / \
+                       /   \
+                      /     \
+                     /       \
+                    /         \
+                   /           \
+          +----------------+  +----------------+
+          |   MtLoButton    |  |  ConsLoButton   |
+          +----------------+  +----------------+
+          | + reverseSequence(): ILoButton        |
+          | + reverseSequenceHelper(ILoButton): ILoButton |
+          | + getButtonByIndex(int): Button        |
+          | + getLength(): int                     |
+          | + beginsWith(ILoButton): boolean        |
+          | + beginsWithHelper(ConsLoButton): boolean |
+          +----------------+  +----------------+
+                              | - first: Button  |
+                              | - rest: ILoButton|
+                              +----------------+

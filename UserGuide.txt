@@ -1,0 +1,15 @@
+
+
+Simon Says is a game where the computer shows the player a sequence of buttons to click, 
+and the player must then repeat that sequence back. 
+first, player hit the start game sign at top, 
+then, there will be sequence of button being light up,
+and then, player will try to remember the right sequence of the button appear
+and click them in order.
+each time player clicked the right button and button will be light up, 
+try to slow down your clicking speed for the program to run.
+If the player has clicked all the right button  in order,
+The game continues, adding one button to the sequence each turn, 
+and start lighting up the button from the beginning of the sequence
+until the player makes a mistake
+the game ends and out print "game end".
